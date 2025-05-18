@@ -1,0 +1,45 @@
+    /* Estilos adicionales para la versión mejorada */
+    .users-card mat-card-header {
+    position: relative;
+    }
+
+    .header-icon {
+    margin-right: 12px;
+    vertical-align: middle;
+    }
+
+    .subtitle-text {
+    font-size: 0.95rem;
+    opacity: 0.9;
+    }
+
+    .add-button mat-icon {
+    margin-right: 8px;
+    font-size: 18px;
+    }
+
+    .users-table {
+    width: 100%;
+    min-width: 600px;
+    overflow-x: auto;
+    }
+
+    .action-button mat-icon {
+    font-size: 18px;
+    vertical-align: middle;
+    margin-right: 4px;
+    }
+
+    @media (max-width: 600px) {
+    .users-table {
+        min-width: 100%;
+    }
+    
+    .action-button span {
+        display: none;
+    }
+    
+    .action-button mat-icon {
+        margin-right: 0;
+    }
+    }

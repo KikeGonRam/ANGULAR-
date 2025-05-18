@@ -1,0 +1,33 @@
+    <mat-card>
+    <mat-card-header>
+        <mat-card-title>Admins</mat-card-title>
+        <mat-card-subtitle>
+        <button mat-raised-button color="primary" routerLink="/admin/new">Add Admin</button>
+        </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <table mat-table [dataSource]="admins" class="mat-elevation-z8">
+        <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef>ID</th>
+            <td mat-cell *matCellDef="let admin">{{ admin.id }}</td>
+        </ng-container>
+        <ng-container matColumnDef="user_id">
+            <th mat-header-cell *matHeaderCellDef>User ID</th>
+            <td mat-cell *matCellDef="let admin">{{ admin.user_id }}</td>
+        </ng-container>
+        <ng-container matColumnDef="role">
+            <th mat-header-cell *matHeaderCellDef>Role</th>
+            <td mat-cell *matCellDef="let admin">{{ admin.role }}</td>
+        </ng-container>
+        <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef>Actions</th>
+            <td mat-cell *matCellDef="let admin">
+            <button mat-button color="primary" [routerLink]="['/admin/edit', admin.id]">Edit</button>
+            <button mat-button color="warn" (click)="deleteAdmin(admin.id)">Delete</button>
+            </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </mat-card-content>
+    </mat-card>

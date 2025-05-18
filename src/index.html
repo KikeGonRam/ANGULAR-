@@ -1,13 +1,202 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="utf-8">
-  <title>AngularApp</title>
+  <title>AngularApp Pro</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <meta name="description" content="Aplicación profesional con Angular">
+  
+  <!-- Favicon moderno -->
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  
+  <!-- Fuentes premium -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Íconos modernos -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Animaciones CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  
+  <!-- Estilos iniciales con animaciones suaves -->
+  <style>
+    :root {
+      --primary-color: #4361ee;
+      --secondary-color: #3f37c9;
+      --accent-color: #4cc9f0;
+      --light-color: #f8f9fa;
+      --dark-color: #212529;
+      --success-color: #4bb543;
+      --warning-color: #f0ad4e;
+      --danger-color: #d9534f;
+      --transition-speed: 0.4s;
+    }
+    
+    body {
+      font-family: 'Poppins', 'Montserrat', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: var(--light-color);
+      color: var(--dark-color);
+      line-height: 1.6;
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    /* Animación de carga inicial */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    app-root {
+      display: block;
+      animation: fadeIn 0.8s ease-out forwards;
+      opacity: 0;
+    }
+    
+    /* Efecto hover moderno para elementos interactivos */
+    .hover-effect {
+      transition: all var(--transition-speed) cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+    
+    .hover-effect:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Efecto de onda al hacer clic */
+    @keyframes ripple {
+      0% {
+        transform: scale(0);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(4);
+        opacity: 0;
+      }
+    }
+    
+    .ripple {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .ripple-effect {
+      position: absolute;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.7);
+      transform: scale(0);
+      animation: ripple 0.6s linear;
+      pointer-events: none;
+    }
+  </style>
 </head>
-<body>
+<body class="mat-typography">
+  <!-- Preloader profesional con animación -->
+  <div id="preloader" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--light-color); z-index: 9999; display: flex; justify-content: center; align-items: center; transition: opacity 0.5s ease;">
+    <div style="position: relative; width: 80px; height: 80px;">
+      <div style="position: absolute; width: 64px; height: 64px; border: 8px solid var(--primary-color); border-top-color: transparent; border-radius: 50%; animation: spin 1s linear infinite;"></div>
+      <div style="position: absolute; width: 64px; height: 64px; border: 8px solid var(--accent-color); border-top-color: transparent; border-radius: 50%; animation: spinReverse 1.2s linear infinite;"></div>
+    </div>
+  </div>
+
   <app-root></app-root>
+
+  <!-- Script para el preloader y animaciones iniciales -->
+  <script>
+    // Preloader animation
+    window.addEventListener('load', function() {
+      const preloader = document.getElementById('preloader');
+      setTimeout(() => {
+        preloader.style.opacity = '0';
+        setTimeout(() => {
+          preloader.style.display = 'none';
+        }, 500);
+      }, 800);
+    });
+    
+    // Ripple effect for buttons
+    document.addEventListener('click', function(e) {
+      if (e.target.classList.contains('ripple') || e.target.closest('.ripple')) {
+        const target = e.target.classList.contains('ripple') ? e.target : e.target.closest('.ripple');
+        const rect = target.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        const ripple = document.createElement('span');
+        ripple.classList.add('ripple-effect');
+        ripple.style.left = `${x}px`;
+        ripple.style.top = `${y}px`;
+        
+        target.appendChild(ripple);
+        
+        setTimeout(() => {
+          ripple.remove();
+        }, 600);
+      }
+    });
+  </script>
+  
+  <!-- Animaciones CSS adicionales -->
+  <style>
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    
+    @keyframes spinReverse {
+      to { transform: rotate(-360deg); }
+    }
+    
+    /* Animación para cards */
+    .card-animate {
+      transition: all 0.3s ease;
+    }
+    
+    .card-animate:hover {
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+    }
+    
+    /* Animación de entrada para secciones */
+    .section-animate {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    
+    .section-animate.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+  
+  <!-- Script para animaciones al hacer scroll -->
+  <script>
+    // Intersection Observer para animaciones al aparecer
+    document.addEventListener('DOMContentLoaded', function() {
+      const sections = document.querySelectorAll('.section-animate');
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.1 });
+      
+      sections.forEach(section => {
+        observer.observe(section);
+      });
+    });
+  </script>
 </body>
 </html>

@@ -1,0 +1,174 @@
+    /* styles.css o tu archivo de estilos principal */
+
+    /* Estilos generales */
+    :root {
+    --primary-color: #3f51b5;
+    --primary-light: #757de8;
+    --primary-dark: #002984;
+    --accent-color: #ff4081;
+    --light-text: #ffffff;
+    --dark-text: #212121;
+    --secondary-text: #757575;
+    --divider-color: #e0e0e0;
+    --background: #f5f5f5;
+    --success-color: #4caf50;
+    --warning-color: #ff9800;
+    --error-color: #f44336;
+    --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    body {
+    font-family: 'Roboto', 'Helvetica Neue', sans-serif;
+    margin: 0;
+    background-color: var(--background);
+    color: var(--dark-text);
+    }
+
+    /* Toolbar con animación y efectos */
+    mat-toolbar {
+    position: relative;
+    z-index: 10;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 0 16px;
+    transition: var(--transition);
+    animation: slideDown 0.5s ease-out;
+    }
+
+    mat-toolbar:hover {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    mat-toolbar span {
+    font-size: 1.5rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    margin-right: 24px;
+    transition: var(--transition);
+    }
+
+    mat-toolbar a.mat-button {
+    position: relative;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    margin: 0 8px;
+    transition: var(--transition);
+    }
+
+    /* Efecto hover para botones del toolbar */
+    mat-toolbar a.mat-button::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: var(--light-text);
+    transform: translateX(-50%);
+    transition: var(--transition);
+    }
+
+    mat-toolbar a.mat-button:hover::after {
+    width: 100%;
+    }
+
+    /* Efecto activo para rutas */
+    mat-toolbar a.mat-button.router-link-active {
+    color: var(--accent-color);
+    }
+
+    mat-toolbar a.mat-button.router-link-active::after {
+    background-color: var(--accent-color);
+    width: 100%;
+    }
+
+    /* Animación para el router-outlet */
+    router-outlet + * {
+    display: block;
+    animation: fadeInUp 0.5s ease-out;
+    padding: 24px;
+    }
+
+    /* Efecto de transición entre rutas */
+    .route-transition {
+    position: relative;
+    }
+
+    .route-transition > * {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    }
+
+    /* Keyframes para animaciones */
+    @keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    }
+
+    @keyframes fadeInUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    }
+
+    /* Efecto ripple personalizado */
+    .mat-ripple-element {
+    background-color: rgba(255, 255, 255, 0.4) !important;
+    }
+
+    /* Media queries para responsividad */
+    @media (max-width: 768px) {
+    mat-toolbar {
+        flex-direction: column;
+        height: auto;
+        padding: 12px 16px;
+    }
+    
+    mat-toolbar span {
+        margin-bottom: 12px;
+        margin-right: 0;
+    }
+    
+    mat-toolbar a.mat-button {
+        width: 100%;
+        text-align: center;
+        margin: 4px 0;
+        padding: 8px 0;
+    }
+    
+    router-outlet + * {
+        padding: 16px;
+    }
+    }
+
+    /* Efecto de elevación para cards (si las usas) */
+    .mat-card {
+    transition: var(--transition);
+    margin-bottom: 24px;
+    }
+
+    .mat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
+    }
+
+    /* Animación para botones */
+    .mat-button, .mat-raised-button {
+    transition: var(--transition) !important;
+    }
+
+    .mat-button:hover, .mat-raised-button:hover {
+    transform: translateY(-2px);
+    }

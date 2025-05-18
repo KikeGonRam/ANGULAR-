@@ -1,0 +1,171 @@
+    /* Estilos para la tarjeta de API */
+    .api-card {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    margin: 24px auto;
+    max-width: 600px;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    background: linear-gradient(145deg, #ffffff, #f5f5f5);
+    border: none;
+    animation: cardEntrance 0.6s ease-out forwards;
+    position: relative;
+    }
+
+    .api-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    .api-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 100%;
+    background: #3f51b5;
+    }
+
+    /* Estilos para el encabezado */
+    .api-card mat-card-header {
+    background: linear-gradient(135deg, #3f51b5, #303f9f);
+    color: white;
+    padding: 24px;
+    margin-bottom: 16px;
+    }
+
+    .api-card mat-card-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    }
+
+    .api-card mat-card-title::before {
+    content: '\2022'; /* Código de punto */
+    color: #4caf50;
+    font-size: 2.5rem;
+    line-height: 0;
+    }
+
+    .api-card mat-card-subtitle {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1rem;
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    }
+
+    /* Estilos para el contenido */
+    .api-card mat-card-content {
+    padding: 0 24px 24px;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #212121;
+    position: relative;
+    }
+
+    .api-card p {
+    margin: 0;
+    padding: 16px;
+    background-color: rgba(63, 81, 181, 0.05);
+    border-radius: 8px;
+    border-left: 4px solid #3f51b5;
+    font-family: 'Roboto Mono', monospace;
+    white-space: pre-wrap;
+    word-break: break-word;
+    animation: fadeIn 0.8s ease-out;
+    }
+
+    /* Indicador de estado */
+    .status-indicator {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    }
+
+    .status-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #f44336;
+    box-shadow: 0 0 8px #f44336;
+    }
+
+    .status-active .status-dot {
+    background-color: #4caf50;
+    box-shadow: 0 0 8px #4caf50;
+    }
+
+    /* Animaciones */
+    @keyframes cardEntrance {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+    }
+
+    @keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+    }
+
+    /* Efecto de pulso para estado activo */
+    @keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(76, 175, 80, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(76, 175, 80, 0);
+    }
+    }
+
+    .status-active .status-dot {
+    animation: pulse 2s infinite;
+    }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+    .api-card {
+        margin: 16px;
+        border-radius: 8px;
+    }
+    
+    .api-card mat-card-header {
+        padding: 16px;
+    }
+    
+    .api-card mat-card-title {
+        font-size: 1.4rem;
+    }
+    
+    .api-card mat-card-content {
+        padding: 0 16px 16px;
+        font-size: 1rem;
+    }
+    
+    .status-indicator {
+        top: 16px;
+        right: 16px;
+    }
+    }
